@@ -18,8 +18,10 @@ main = do
 
     -- let heightmap = generateWorleyNoise 634560789 (5, 5) 200
         -- img = Img.makeImage (1000, 1000) (\pos -> Img.PixelY $ index2D (1000, 1000) pos heightmap) :: Img.Image Img.VU Img.Y Double
-    let heightmap = WN.generateWorleyNoise 4523
-        img = Img.makeImage (2000, 2000) (\pos -> Img.PixelY $ index2D (2000, 2000) pos heightmap) :: Img.Image Img.VU Img.Y Double
+    -- let heightmap = WN.generateWorleyNoise (WN.WorldInfo 234234 10)
+        -- img = Img.makeImage (2000, 2000) (\pos -> Img.PixelY $ index2D (2000, 2000) pos heightmap) :: Img.Image Img.VU Img.Y Double
+    let world = WN.WorldInfo 234234 100
+        img = Img.makeImage (2000, 2000) (\(x, y) -> Img.PixelY $ WN.worleyNoise world (fromIntegral x, fromIntegral y)) :: Img.Image Img.VU Img.Y Double
 
     Img.writeImage "heightmap.png" img
 
