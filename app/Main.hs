@@ -27,10 +27,10 @@ main = do
                 (WN.HeightMapInfo 87823 10, 0.05),
                 (WN.HeightMapInfo 65436 5, 0.04),
                 (WN.HeightMapInfo 25345645 2, 0.01)]
-        offsets = [(offX, offY) | offX <- [0, 512..512 * 10], offY <- [0, 512..512 * 10]]
+        offsets = [(offX, offY) | offX <- [0, segmentSize..segmentSize * 10], offY <- [0, segmentSize..segmentSize * 10]]
 
     forM_ offsets $ \offset@(offX, offY) -> do
-        let img = Img.makeImage (512, 512) (Img.PixelY . octaveNoise octaves . WN.shiftPosition offset) :: Img.Image Img.VU Img.Y Double
+        let img = Img.makeImage (segmentSize, segmentSize) (Img.PixelY . octaveNoise octaves . WN.shiftPosition offset) :: Img.Image Img.VU Img.Y Double
             fileName = "out/heightmap" ++ show offX ++ "_" ++ show offY ++ ".png"
 
         Img.writeImage fileName img
