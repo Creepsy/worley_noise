@@ -4,7 +4,8 @@ module WorleyNoise (
     ChunkSize,
     HeightMapInfo(..),
     worleyNoise,
-    index2D
+    index2D,
+    shiftPosition
 ) where
 
 import qualified Data.Vector as Vec

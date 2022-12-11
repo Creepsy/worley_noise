@@ -36,3 +36,6 @@ executable worley-noise
                       split >= 0.2.3.5       
     hs-source-dirs:   app
     default-language: Haskell2010
+    ghc-options:
+        -O2
+        -threaded
